@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pokedex Tracker on Sui - Track and catalog your Pokémon NFT collection with a pixelated, retro-inspired Pokedex experience.">
+    <meta name="keywords" content="Pokedex, Pokémon, Sui, NFT, Tracker, Blockchain, Crypto">
+    <meta name="author" content="Pokedex Tracker Team">
+    <title>POKEDEX</title>
+    <link rel="icon" type="image/png" href="./assets/hero.png">
+    <link rel="apple-touch-icon" href="/assets/hero.png">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #ff0000, #ffffff);
+            min-height: 100vh;
+            font-family: 'Press Start 2P', cursive;
+            image-rendering: pixelated;
+            color: #000;
+        }
+        .poke-card {
+            background: #f5f5f5;
+            border: 4px solid #000;
+            border-radius: 0;
+            box-shadow: 8px 8px 0 #000;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .poke-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0 #000;
+        }
+        img {
+            image-rendering: pixelated;
+        }
+        .pixel-text {
+            text-shadow: 2px 2px 0 #000;
+        }
+        .header-bg {
+            background: url('https://www.transparenttextures.com/patterns/pixel-pattern.png'), #ff0000;
+            background-blend-mode: overlay;
+        }
+        .section-bg {
+            background: #ffffff;
+            border: 4px solid #000;
+            box-shadow: 8px 8px 0 #000;
+        }
+        .btn-primary {
+            background: #ffcb05;
+            color: #000;
+            border: 3px solid #000;
+            padding: 0.5rem 1rem;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn-primary:hover {
+            background: #ffdb58;
+            transform: scale(1.05);
+        }
+        .btn-disabled {
+            background: #999;
+            color: #fff;
+            border: 3px solid #000;
+            padding: 0.5rem 1rem;
+            cursor: not-allowed;
+        }
+        .poke-info {
+            background: #e0e0e0;
+            border: 2px solid #000;
+            padding: 0.75rem;
+        }
+        .footer-bg {
+            background: #3b4cca;
+            color: #fff;
+        }
+        /* Mobile Responsive Styles */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            h3 {
+                font-size: 1rem;
+            }
+            p, .text-sm {
+                font-size: 0.75rem;
+            }
+            .poke-card {
+                padding: 1rem;
+                box-shadow: 4px 4px 0 #000;
+            }
+            .poke-card:hover {
+                transform: translate(-2px, -2px);
+                box-shadow: 6px 6px 0 #000;
+            }
+            .poke-info {
+                padding: 0.5rem;
+            }
+            .btn-primary, .btn-disabled {
+                padding: 0.5rem;
+                font-size: 0.75rem;
+            }
+            .header-bg {
+                padding: 2rem 1rem;
+            }
+            .section-bg {
+                padding: 1.5rem;
+            }
+            img[src="/assets/hero.png"] {
+                max-width: 200px;
+            }
+            img[src="/assets/preview.gif"] {
+                max-width: 100%;
+            }
+        }
+        @media (max-width: 768px) {
+            .grid-cols-2, .grid-cols-3, .grid-cols-4 {
+                grid-template-columns: 1fr;
+            }
+            .flex.space-x-6 {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-bg text-center py-12">
+        <img src="/assets/hero.png" alt="Pokedex Hero" class="mx-auto mb-6 pixelated" style="max-width: 350px;">
+        <h1 class="text-5xl font-bold text-yellow-400 pixel-text">POKEDEX</h1>
+        <p class="mt-4 text-lg pixel-text">Your Ultimate Pokémon NFT Tracker on Sui</p>
+        <div class="mt-6 flex justify-center space-x-6">
+            <a href="https://x.com/PokedexPulls" class="btn-primary pixel-text flex items-center">
+                <i class="fa-brands fa-x-twitter w-5 h-5 mr-2"></i> Follow on X
+            </a>
+            <button class="btn-disabled pixel-text flex items-center" disabled>
+                <i class="fa-solid fa-lock w-5 h-5 mr-2"></i> Coming Soon
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-12">
+        <section class="section-bg p-8 mb-12">
+            <h2 class="text-3xl font-semibold mb-6 pixel-text text-center">Welcome to Pokedex Tracker</h2>
+            <p class="text-sm mb-4">Pokedex Tracker is a cutting-edge platform built on the Sui blockchain, designed to help Pokémon enthusiasts track and catalog their NFT collections with a retro, pixelated aesthetic inspired by classic Pokémon games.</p>
+            <p class="text-sm mb-4">Whether you're a casual collector or a competitive trainer, our system provides a seamless experience to manage your Pokémon NFTs, view detailed stats, and share your progress with the community.</p>
+            <div class="flex justify-center mt-6">
+                <img src="/assets/preview.gif" alt="Pokedex Tracker Preview" class="border-4 border-black pixelated max-w-full h-auto" style="max-width: 600px;">
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-semibold text-center mb-8 pixel-text">Why Choose Pokedex Tracker?</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="poke-card p-6 text-center">
+                    <i class="fa-solid fa-shield-halved text-4xl mb-4"></i>
+                    <h3 class="text-lg font-bold pixel-text mb-4">Blockchain Security</h3>
+                    <p class="text-sm">Leverage the power of Sui blockchain for secure and transparent tracking of your Pokémon NFT collection.</p>
+                </div>
+                <div class="poke-card p-6 text-center">
+                    <i class="fa-solid fa-gamepad text-4xl mb-4"></i>
+                    <h3 class="text-lg font-bold pixel-text mb-4">Retro Design</h3>
+                    <p class="text-sm">Enjoy a pixelated, Game Boy-inspired interface that brings nostalgia to every interaction.</p>
+                </div>
+                <div class="poke-card p-6 text-center">
+                    <i class="fa-solid fa-users text-4xl mb-4"></i>
+                    <h3 class="text-lg font-bold pixel-text mb-4">Community Driven</h3>
+                    <p class="text-sm">Connect with other trainers, share your Pokedex, and compete on leaderboards.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-bg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-center mb-8 pixel-text">Featured Pokémon NFTs</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="poke-card p-6 text-center">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="Bulbasaur" class="mx-auto mb-4 pixelated">
+                    <h3 class="text-lg font-bold pixel-text">Bulbasaur</h3>
+                    <p class="text-sm text-gray-600">Grass/Poison</p>
+                    <div class="poke-info mt-4 text-sm">
+                        <p>HP: 45</p>
+                        <p>Attack: 49</p>
+                        <p>Defense: 49</p>
+                    </div>
+                </div>
+                <div class="poke-card p-6 text-center">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" alt="Charmander" class="mx-auto mb-4 pixelated">
+                    <h3 class="text-lg font-bold pixel-text">Charmander</h3>
+                    <p class="text-sm text-gray-600">Fire</p>
+                    <div class="poke-info mt-4 text-sm">
+                        <p>HP: 39</p>
+                        <p>Attack: 52</p>
+                        <p>Defense: 43</p>
+                    </div>
+                </div>
+                <div class="poke-card p-6 text-center">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="Squirtle" class="mx-auto mb-4 pixelated">
+                    <h3 class="text-lg font-bold pixel-text">Squirtle</h3>
+                    <p class="text-sm text-gray-600">Water</p>
+                    <div class="poke-info mt-4 text-sm">
+                        <p>HP: 44</p>
+                        <p>Attack: 48</p>
+                        <p>Defense: 65</p>
+                    </div>
+                </div>
+                <div class="poke-card p-6 text-center">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Pikachu" class="mx-auto mb-4 pixelated">
+                    <h3 class="text-lg font-bold pixel-text">Pikachu</h3>
+                    <p class="text-sm text-gray-600">Electric</p>
+                    <div class="poke-info mt-4 text-sm">
+                        <p>HP: 35</p>
+                        <p>Attack: 55</p>
+                        <p>Defense: 40</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-semibold text-center mb-8 pixel-text">How It Works</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="poke-card p-6 text-center">
+                    <i class="fa-solid fa-user-plus text-4xl mb-4"></i>
+                    <h3 class="text-lg font-bold pixel-text mb-4">Step 1: Sign Up</h3>
+                    <p class="text-sm">Create an account on our platform using your Sui wallet for secure access.</p>
+                </div>
+                <div class="poke-card p-6 text-center">
+                    <i class="fa-solid fa-list-check text-4xl mb-4"></i>
+                    <h3 class="text-lg font-bold pixel-text mb-4">Step 2: Track Pokémon NFTs</h3>
+                    <p class="text-sm">Add Pokémon NFTs to your Pokedex, view stats, and organize your collection.</p>
+                </div>
+                <div class="poke-card p-6 text-center">
+                    <i class="fa-solid fa-share-nodes text-4xl mb-4"></i>
+                    <h3 class="text-lg font-bold pixel-text mb-4">Step 3: Share & Compete</h3>
+                    <p class="text-sm">Show off your collection, join leaderboards, and connect with other trainers.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-bg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-center mb-8 pixel-text">Join the Community</h2>
+            <p class="text-sm mb-4 text-center">Stay updated with the latest news, events, and updates by following us on X.</p>
+            <div class="flex justify-center">
+                <a href="https://x.com/PokedexPulls" class="btn-primary pixel-text flex items-center">
+                    <i class="fa-solid fa-users text-4xl mb-4"></i> Join Now
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-bg text-center py-12">
+        <h3 class="text-2xl font-bold pixel-text mb-4">Pokedex Tracker</h3>
+        <p class="text-sm mb-4">Built on Sui for Pokémon NFT fans worldwide.</p>
+        <div class="flex justify-center space-x-6 mb-4">
+            <a href="https://x.com/PokedexPulls" class="text-yellow-400 hover:text-yellow-300 pixel-text flex items-center">
+                <i class="fa-brands fa-x-twitter w-5 h-5 mr-2"></i> X
+            </a>
+            <a href="#" class="text-yellow-400 hover:text-yellow-300 pixel-text flex items-center">
+                <i class="fa-solid fa-file-contract w-5 h-5 mr-2"></i> Terms
+            </a>
+            <a href="#" class="text-yellow-400 hover:text-yellow-300 pixel-text flex items-center">
+                <i class="fa-solid fa-shield-halved w-5 h-5 mr-2"></i> Privacy
+            </a>
+        </div>
+        <p class="text-sm">© 2025 Pokedex Tracker. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation to poke-cards on scroll
+        const pokeCards = document.querySelectorAll('.poke-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.2 });
+
+        pokeCards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(card);
+        });
+
+        // Adjust layout for small screens
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 640) {
+                document.querySelectorAll('.flex.space-x-6').forEach(el => {
+                    el.classList.add('flex-col', 'gap-4');
+                    el.classList.remove('space-x-6');
+                });
+            } else {
+                document.querySelectorAll('.flex.flex-col.gap-4').forEach(el => {
+                    el.classList.remove('flex-col', 'gap-4');
+                    el.classList.add('space-x-6');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
