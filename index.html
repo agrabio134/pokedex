@@ -53,8 +53,9 @@
             background: #ffcb05;
             color: #000;
             border: 3px solid #000;
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1.5rem;
             transition: background 0.3s, transform 0.2s;
+            white-space: nowrap;
         }
         .btn-primary:hover {
             background: #ffdb58;
@@ -64,8 +65,9 @@
             background: #999;
             color: #fff;
             border: 3px solid #000;
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1.5rem;
             cursor: not-allowed;
+            white-space: nowrap;
         }
         .poke-info {
             background: #e0e0e0;
@@ -83,9 +85,12 @@
             text-shadow: 2px 2px 0 #000;
         }
         .ca-soon {
-            font-size: 1.25rem;
+            font-size: 1rem;
             color: #ffcb05;
             text-shadow: 2px 2px 0 #000;
+            word-break: break-all;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
         .nintendo-teaser {
             position: relative;
@@ -113,16 +118,18 @@
         /* Mobile Responsive Styles */
         @media (max-width: 640px) {
             h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                line-height: 2.5rem;
             }
             h2 {
-                font-size: 1.5rem;
+                font-size: 1.25rem;
             }
             h3 {
-                font-size: 1rem;
+                font-size: 0.875rem;
             }
             p, .text-sm {
                 font-size: 0.75rem;
+                line-height: 1.25rem;
             }
             .poke-card {
                 padding: 1rem;
@@ -136,39 +143,69 @@
                 padding: 0.5rem;
             }
             .btn-primary, .btn-disabled {
-                padding: 0.5rem;
+                padding: 0.5rem 1rem;
                 font-size: 0.75rem;
+                width: 100%;
+                text-align: center;
             }
             .header-bg {
                 padding: 2rem 1rem;
             }
             .section-bg {
-                padding: 1.5rem;
+                padding: 1rem;
             }
             img[src="/assets/hero.png"] {
                 max-width: 200px;
+                width: 100%;
+                height: auto;
             }
             img[src="/assets/preview.gif"] {
                 max-width: 100%;
+                height: auto;
             }
             .countdown {
                 font-size: 1rem;
             }
             .ca-soon {
-                font-size: 0.875rem;
+                font-size: 0.75rem;
+                padding: 0.5rem;
             }
             .teaser-text {
-                font-size: 1.25rem;
+                font-size: 1rem;
+            }
+            .header-bg .flex {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
             }
         }
         @media (max-width: 768px) {
-            .grid-cols-2, .grid-cols-3, .grid-cols-4 {
+            .grid-cols-1, .grid-cols-2, .grid-cols-3, .grid-cols-4 {
                 grid-template-columns: 1fr;
             }
             .flex.space-x-6 {
                 flex-direction: column;
                 gap: 1rem;
+                align-items: center;
             }
+        }
+        @media (min-width: 769px) {
+            .grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+            .flex.space-x-6 {
+                flex-direction: row;
+                gap: 1.5rem;
+            }
+        }
+        /* Ensure CA container has proper spacing */
+        .ca-container {
+            max-width: 100%;
+            overflow: hidden;
+            padding: 0.5rem;
         }
     </style>
 </head>
@@ -176,27 +213,29 @@
     <header class="header-bg text-center py-12">
         <img src="/assets/hero.png" alt="Pokedex Hero" class="mx-auto mb-6 pixelated" style="max-width: 350px;">
         <h1 class="text-5xl font-bold text-yellow-400 pixel-text">POKEDEX</h1>
-        <p class="mt-4 text-lg pixel-text">No Presale, Stealth Launched, Pure Organic, No Team Allocation, Team Buys After Telegram Reveal, Cooking Before Dubai Basecamp, You won't see anything like this</p>
+        <p class="mt-4 text-lg pixel-text max-w-3xl mx-auto">No Presale, Stealth Launched, Pure Organic, No Team Allocation, Team Buys After Telegram Reveal, Cooking Before Dubai Basecamp, You won't see anything like this</p>
         <div class="mt-6">
             <p class="text-lg pixel-text">Telegram will be revealed in</p>
             <div id="countdown" class="countdown mt-2">Loading...</div>
-            <p class="ca-soon mt-2">CA: 0xbb5a77eb54548ee38015fc30a51a9d71b560eb1df4d33f4231aa762480810e35::pokedex::POKEDEX</p>
+            <div class="ca-container mt-2">
+                <p class="ca-soon">CA: 0xbb5a77eb54548ee38015fc30a51a9d71b560eb1df4d33f4231aa762480810e35::pokedex::POKEDEX</p>
+            </div>
         </div>
         <div class="mt-6 flex justify-center space-x-6">
-            <a href="https://x.com/PokedexSui" class="btn-primary pixel-text flex items-center">
+            <a href="https://x.com/PokedexSui" class="btn-primary pixel-text flex items-center justify-center">
                 <i class="fa-brands fa-x-twitter w-5 h-5 mr-2"></i> Follow on X
             </a>
-            <button class="btn-disabled pixel-text flex items-center" disabled>
+            <button class="btn-disabled pixel-text flex items-center justify-center" disabled>
                 <i class="fa-solid fa-lock w-5 h-5 mr-2"></i> Coming Soon
             </button>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-12">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
         <section class="section-bg p-8 mb-12">
             <h2 class="text-3xl font-semibold mb-6 pixel-text text-center">Welcome to Pokedex Tracker</h2>
-            <p class="text-sm mb-4">Pokedex Tracker is a cutting-edge platform built on the Sui blockchain, designed to help Pokémon enthusiasts track and catalog their NFT collections with a retro, pixelated aesthetic inspired by classic Pokémon games.</p>
-            <p class="text-sm mb-4">Whether you're a casual collector or a competitive trainer, our system provides a seamless experience to manage your Pokémon NFTs, view detailed stats, and share your progress with the community.</p>
+            <p class="text-sm mb-4 max-w-3xl mx-auto">Pokedex Tracker is a cutting-edge platform built on the Sui blockchain, designed to help Pokémon enthusiasts track and catalog their NFT collections with a retro, pixelated aesthetic inspired by classic Pokémon games.</p>
+            <p class="text-sm mb-4 max-w-3xl mx-auto">Whether you're a casual collector or a competitive trainer, our system provides a seamless experience to manage your Pokémon NFTs, view detailed stats, and share your progress with the community.</p>
             <div class="flex justify-center mt-6">
                 <img src="/assets/preview.gif" alt="Pokedex Tracker Preview" class="border-4 border-black pixelated max-w-full h-auto" style="max-width: 600px;">
             </div>
@@ -225,7 +264,7 @@
 
         <section class="section-bg p-8 mb-12">
             <h2 class="text-3xl font-semibold text-center mb-8 pixel-text">Tokenomics</h2>
-            <p class="text-sm mb-4 text-center">Pokedex Tracker operates on a robust tokenomics model to ensure sustainability and fairness for all participants.</p>
+            <p class="text-sm mb-4 text-center max-w-3xl mx-auto">Pokedex Tracker operates on a robust tokenomics model to ensure sustainability and fairness for all participants.</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="poke-card p-6 text-center">
                     <i class="fa-solid fa-wallet text-4xl mb-4"></i>
@@ -284,7 +323,7 @@
 
         <section class="section-bg p-8 mb-12">
             <h2 class="text-3xl font-semibold text-center mb-8 pixel-text">Partnerships</h2>
-            <p class="text-sm mb-4 text-center">We're excited to announce a major upcoming collaboration that will elevate the Pokedex Tracker experience!</p>
+            <p class="text-sm mb-4 text-center max-w-3xl mx-auto">We're excited to announce a major upcoming collaboration that will elevate the Pokedex Tracker experience!</p>
             <div class="nintendo-teaser flex justify-center mt-6">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGwUY66MkJS0Koui1MTVDXYYtXbkfX12ttq3fdpfJN5-_r9WF9SZKC1OGHz6vq4Jvq5T8&usqp=CAU" alt="Nintendo Teaser" class="blur-overlay border-4 border-black pixelated max-w-full h-auto" style="max-width: 600px;">
                 <div class="teaser-text">Something Big is Coming...</div>
@@ -294,9 +333,9 @@
 
         <section class="section-bg p-8 mb-12">
             <h2 class="text-3xl font-semibold text-center mb-8 pixel-text">Join the Community</h2>
-            <p class="text-sm mb-4 text-center">Stay updated with the latest news, events, and updates by following us on X.</p>
+            <p class="text-sm mb-4 text-center max-w-3xl mx-auto">Stay updated with the latest news, events, and updates by following us on X.</p>
             <div class="flex justify-center">
-                <a href="https://x.com/PokedexSui" class="btn-primary pixel-text flex items-center">
+                <a href="https://x.com/PokedexSui" class="btn-primary pixel-text flex items-center justify-center">
                     <i class="fa-solid fa-users text-4xl mb-4"></i> Join Now
                 </a>
             </div>
@@ -325,7 +364,7 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                document.querySelector(this.getAttribute('href')). scrollIntoView({
                     behavior: 'smooth'
                 });
             });
@@ -350,19 +389,23 @@
         });
 
         // Adjust layout for small screens
-        window.addEventListener('resize', () => {
+        function adjustLayout() {
+            const flexContainers = document.querySelectorAll('.flex.space-x-6');
             if (window.innerWidth <= 640) {
-                document.querySelectorAll('.flex.space-x-6').forEach(el => {
+                flexContainers.forEach(el => {
                     el.classList.add('flex-col', 'gap-4');
                     el.classList.remove('space-x-6');
                 });
             } else {
-                document.querySelectorAll('.flex.flex-col.gap-4').forEach(el => {
+                flexContainers.forEach(el => {
                     el.classList.remove('flex-col', 'gap-4');
                     el.classList.add('space-x-6');
                 });
             }
-        });
+        }
+
+        window.addEventListener('resize', adjustLayout);
+        window.addEventListener('load', adjustLayout);
 
         // Countdown timer to 16:00 UTC
         function startCountdown() {
@@ -375,9 +418,8 @@
             function getNextSixteenHundredUTC() {
                 const now = new Date();
                 const utcNow = new Date(now.toUTCString());
-                const target = new Date(Date.UTC(utcNow.getUTCFullYear(), utcNow.getUTCMonth(), utcNow.getUTCDate(), 28, 0, 0));
+                const target = new Date(Date.UTC(utcNow.getUTCFullYear(), utcNow.getUTCMonth(), utcNow.getUTCDate(), 27, 0, 0));
                 
-                // If 16:00 UTC today has passed, set target to 16:00 UTC tomorrow
                 if (utcNow.getTime() > target.getTime()) {
                     target.setUTCDate(target.getUTCDate() + 1);
                 }
@@ -392,7 +434,6 @@
 
                 if (timeLeft <= 0) {
                     countdownElement.textContent = 'Telegram Revealed!';
-                    // Reset to next day's 16:00 UTC
                     endTime = getNextSixteenHundredUTC();
                 } else {
                     const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -406,7 +447,6 @@
             setInterval(updateCountdown, 1000);
         }
 
-        // Initialize countdown
         try {
             startCountdown();
         } catch (error) {
