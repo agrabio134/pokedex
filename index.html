@@ -369,7 +369,7 @@
             function getNextSixteenHundredUTC() {
                 const now = new Date();
                 const utcNow = new Date(now.toUTCString());
-                const target = new Date(Date.UTC(utcNow.getUTCFullYear(), utcNow.getUTCMonth(), utcNow.getUTCDate(), 16, 0, 0));
+                const target = new Date(Date.UTC(utcNow.getUTCFullYear(), utcNow.getUTCMonth(), utcNow.getUTCDate(), 24, 0, 0));
                 
                 // If 16:00 UTC today has passed, set target to 16:00 UTC tomorrow
                 if (utcNow.getTime() > target.getTime()) {
