@@ -87,6 +87,29 @@
             color: #ffcb05;
             text-shadow: 2px 2px 0 #000;
         }
+        .nintendo-teaser {
+            position: relative;
+            overflow: hidden;
+        }
+        .blur-overlay {
+            filter: blur(10px);
+            opacity: 0.6;
+            transition: filter 0.5s, opacity 0.5s;
+        }
+        .nintendo-teaser:hover .blur-overlay {
+            filter: blur(8px);
+            opacity: 0.8;
+        }
+        .teaser-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: #ffcb05;
+            text-shadow: 3px 3px 0 #000;
+            opacity: 0.9;
+        }
         /* Mobile Responsive Styles */
         @media (max-width: 640px) {
             h1 {
@@ -133,6 +156,9 @@
             }
             .ca-soon {
                 font-size: 0.875rem;
+            }
+            .teaser-text {
+                font-size: 1.25rem;
             }
         }
         @media (max-width: 768px) {
@@ -284,6 +310,16 @@
                     <p class="text-sm">Show off your collection, join leaderboards, and connect with other trainers.</p>
                 </div>
             </div>
+        </section>
+
+        <section class="section-bg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-center mb-8 pixel-text">Partnerships</h2>
+            <p class="text-sm mb-4 text-center">We're excited to announce a major upcoming collaboration that will elevate the Pokedex Tracker experience!</p>
+            <div class="nintendo-teaser flex justify-center mt-6">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGwUY66MkJS0Koui1MTVDXYYtXbkfX12ttq3fdpfJN5-_r9WF9SZKC1OGHz6vq4Jvq5T8&usqp=CAU" alt="Nintendo Teaser" class="blur-overlay border-4 border-black pixelated max-w-full h-auto" style="max-width: 600px;">
+                <div class="teaser-text">Something Big is Coming...</div>
+            </div>
+            <p class="text-sm mt-4 text-center">Stay tuned for more details on this exclusive partnership!</p>
         </section>
 
         <section class="section-bg p-8 mb-12">
